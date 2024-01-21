@@ -2,6 +2,7 @@ README.md
 setup.py
 audio_scripts/__init__.py
 audio_scripts/ai_audio_chop.py
+audio_scripts/matlibplot.py
 audio_scripts/runner.py
 audio_scripts/simple_audio_chop.py
 audio_scripts.egg-info/PKG-INFO
