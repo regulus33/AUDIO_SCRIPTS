@@ -6,6 +6,7 @@ from pydub import AudioSegment
 from scipy.io import wavfile
 import csv
 
+
 # https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/hub/tutorials/yamnet.ipynb#scrollTo=VX8Vzs6EpwMo
 class AudioProcessor:
     def __init__(self, directory):
@@ -13,12 +14,17 @@ class AudioProcessor:
         self.yamnet_model = hub.load('https://tfhub.dev/google/yamnet/1')
 
     def process_audio_file(self, file_path):
+        # ffmpeg wrapper, here we just read audio
         audio = AudioSegment.from_mp3(file_path)
+        # set 16k sample rate is needed for Yamnet to read properly
         audio = audio.set_frame_rate(16000).set_channels(1)
+        # save as wav, which is needed for the read operation
         audio.export(file_path.replace('.mp3', '.wav'), format="wav")
-
+        # get the audio data
         sample_rate, wav_data = wavfile.read(file_path.replace('.mp3', '.wav'))
-        waveform = wav_data / np.iinfo(wav_data.dtype).max  # Normalize the waveform
+        # normalize for some reason
+        waveform = wav_data / np.iinfo(wav_data.dtype).max
+        #
         return waveform
 
     def class_names_from_csv(self):
