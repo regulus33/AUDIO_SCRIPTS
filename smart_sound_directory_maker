@@ -1,6 +1,2 @@
 #!/bin/bash
-INDIR='/Users/zacharyrowden/Desktop/audioscripts/audio_files/in/audio_downloads'
-OUTDIR='/Users/zacharyrowden/Desktop/audioscripts/audio_files/out'
-
-python smart_sound_directory_maker.py --indir $INDIR --outdir $OUTDIR
-
+python smart_sound_directory_maker.py --indir '/Users/zacharyrowden/Desktop/AUDIO_SCRIPTS/audio_files/in/audio_downloads'  --outdir '/Users/zacharyrowden/Desktop/AUDIO_SCRIPTS/audio_files/out'

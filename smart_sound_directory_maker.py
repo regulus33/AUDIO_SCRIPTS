@@ -9,6 +9,8 @@ from pydub import AudioSegment  # PyDub, for audio file manipulation
 from scipy.io import wavfile  # SciPy module for reading and writing .wav files
 import csv  # Module for handling CSV files
 import shutil
+import pdb
+
 
 # Define a constant for the file extension we're working with
 FILE_EXTENSION = 'mp3'
@@ -119,11 +121,12 @@ class SmartSoundDirectoryMaker:
 
 parser = ArgumentParser()
 parser.add_argument('--indir', type=str, required=True, help="Directory with input files")
+parser.add_argument('--outdir', type=str, required=True, help="Directory with output files")
 
 args = parser.parse_args()
 
 indir = scrub_arg(args.indir)
 outdir = scrub_arg(args.outdir)
-
+# pdb.set_trace()
 smart_sound_directory_maker = SmartSoundDirectoryMaker(indir, outdir)
 smart_sound_directory_maker.analyze_directory()
